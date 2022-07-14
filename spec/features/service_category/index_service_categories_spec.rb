@@ -5,7 +5,7 @@ feature 'Index service categories', '
 ' do
   given!(:service_category) { create(:service_category) }
   given!(:service_category2) { create(:service_category, name: 'Кузовные работы') }
-  scenario 'changes name' do
+  scenario 'shows list of categories' do
     visit root_path
 
     click_on 'Управление категориями и услугами'

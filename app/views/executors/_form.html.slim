@@ -1,0 +1,7 @@
+= form_for @executor do |f|
+  = render partial: 'common/errors', locals: { resource: @executor } 
+
+  .field
+    = f.label :name, 'Имя'
+    = f.text_field :name
+  .actions = f.submit "#{@executor.created_at ? "Изменить" : "Создать"}" 

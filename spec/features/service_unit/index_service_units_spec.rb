@@ -6,7 +6,7 @@ feature 'Index service units', '
   given(:service_category) { create(:service_category) }
   given!(:service_unit) { create(:service_unit, service_category: service_category) }
   given!(:service_unit2) { create(:service_unit, service_category: service_category, name: 'Покраска двери') }
-  scenario 'changes name' do
+  scenario 'shows list of units' do
     visit root_path
 
     click_on 'Управление категориями и услугами'

@@ -27,10 +27,8 @@ class ServiceUnitsController < ApplicationController
     respond_to do |format|
       if @service_unit.save
         format.html { redirect_to service_category_url(@service_category), notice: "Service unit was successfully created." }
-        format.json { render :show, status: :created, location: @service_unit }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @service_unit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,10 +38,8 @@ class ServiceUnitsController < ApplicationController
     respond_to do |format|
       if @service_unit.update(service_unit_params)
         format.html { redirect_to service_category_url(@service_unit.service_category), notice: "Service unit was successfully updated." }
-        format.json { render :show, status: :ok, location: @service_unit }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @service_unit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +50,6 @@ class ServiceUnitsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to service_category_url(@service_unit.service_category), notice: "Service unit was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

@@ -1,0 +1,19 @@
+h1 Список исполнителей
+
+table
+  thead
+    tr
+      th Имя
+      th
+      th
+
+  tbody
+    - @executors.each do |executor|
+      tr
+        td = link_to executor.name, executor
+        td = link_to "Изменить", edit_executor_path(executor)
+        td = link_to "Удалить", executor, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "Создать исполнителя", new_executor_path

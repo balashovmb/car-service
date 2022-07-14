@@ -1,12 +1,10 @@
-p
-  strong Name:
-  = @service_category.name
+h3 = "Услуга: #{@service_category.name}"
 
 p = link_to "Изменить категорию", edit_service_category_path(@service_category)
 
 p = link_to "Создать услугу", new_service_category_service_unit_path(@service_category)
 
-h1
+h3
   | Услуги
 table
   thead
