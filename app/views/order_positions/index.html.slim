@@ -1,0 +1,25 @@
+h1 Listing order_positions
+
+table
+  thead
+    tr
+      th Executor
+      th Service unit
+      th Order
+      th
+      th
+      th
+
+  tbody
+    - @order_positions.each do |order_position|
+      tr
+        td = order_position.executor
+        td = order_position.service_unit
+        td = order_position.order
+        td = link_to "Show", order_position
+        td = link_to "Edit", edit_order_position_path(order_position)
+        td = link_to "Destroy", order_position, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "New Order position", new_order_position_path

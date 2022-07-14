@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_14_063132) do
+ActiveRecord::Schema.define(version: 2022_07_14_080216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2022_07_14_063132) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_positions", force: :cascade do |t|
+    t.bigint "executor_id", null: false
+    t.bigint "service_unit_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["executor_id"], name: "index_order_positions_on_executor_id"
+    t.index ["order_id"], name: "index_order_positions_on_order_id"
+    t.index ["service_unit_id"], name: "index_order_positions_on_service_unit_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -41,4 +52,7 @@ ActiveRecord::Schema.define(version: 2022_07_14_063132) do
     t.index ["service_category_id"], name: "index_service_units_on_service_category_id"
   end
 
+  add_foreign_key "order_positions", "executors"
+  add_foreign_key "order_positions", "orders"
+  add_foreign_key "order_positions", "service_units"
 end

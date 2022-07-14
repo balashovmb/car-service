@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Executor:
+  = @order_position.executor
+
+p
+  strong Service unit:
+  = @order_position.service_unit
+
+p
+  strong Order:
+  = @order_position.order
+
+=> link_to "Edit", edit_order_position_path(@order_position)
+'|
+=< link_to "Back", order_positions_path

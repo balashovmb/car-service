@@ -5,3 +5,17 @@ h1 Editing order
 => link_to "Show", @order
 '|
 =< link_to "Back", orders_path
+
+= form_for [@order, @order_position] do |f|
+  = render partial: 'common/errors', locals: { resource: @order_position } 
+
+  .field
+    = f.label :executor
+    = f.text_field :executor
+  .field
+    = f.label :service_unit
+    = f.text_field :service_unit
+  .field
+    = f.label :order
+    = f.text_field :order
+  .actions = f.submit
