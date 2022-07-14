@@ -1,5 +1,25 @@
 h1 Список заказов
 
+= form_with url: orders_path, method: :get do |f|
+  .field
+    = f.label :sort_by, 'Тип сортировки'
+    = f.select :sort_by, sort_types
+  h3 Фильтры
+  i Можно выбрать несколько позиций с зажатым ctrl
+  p.field
+    = f.label :customers, 'Клиенты'
+    = f.select :customers, Order.pluck(:customer).uniq, {}, {multiple: true}
+  p.field
+    = f.label :executors, 'Исполнители'
+    = f.select :executors, Executor.pluck(:name, :id), {}, {multiple: true}
+  p.field
+    = f.label :service_units, 'Услуги'
+    = f.select :service_units, ServiceUnit.pluck(:name, :id), {}, {multiple: true}
+  p.field
+    = f.label :service_categories, 'Категории услуг'
+    = f.select :service_categories, ServiceCategory.pluck(:name, :id), {}, {multiple: true}
+
+  = f.submit 'Отобразить'
 table
   thead
     tr
