@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'Edit service category', '
-  To manage workflow user can edit service category
+feature 'Edit executor', '
+  To manage workflow user can edit executor
 ' do
   given!(:executor) { create(:executor) }
   scenario 'changes name' do

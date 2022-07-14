@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Create executor', '
-  To manage workflow user can create service executor
+  To manage workflow user can create executor
 ' do
   context 'valid params' do
     scenario 'creates' do

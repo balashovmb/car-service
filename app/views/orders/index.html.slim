@@ -1,0 +1,23 @@
+h1 Список заказов
+
+table
+  thead
+    tr
+      th Клиент
+      th Дата создания
+      th
+      th
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.customer
+        td = order.created_at.strftime('%F')
+        td = link_to "Просмотр", order
+        td = link_to "Изменить", edit_order_path(order)
+        td = link_to "Удалить", order, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "Создать заказ", new_order_path
