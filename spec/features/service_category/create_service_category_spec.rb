@@ -12,7 +12,7 @@ feature 'Create service category', '
       fill_in 'Название', with: 'Покраска'
       click_on 'Создать'
 
-      expect(page).to have_content "Service category was successfully created"
+      expect(page).to have_content 'Service category was successfully created'
     end
   end
 end

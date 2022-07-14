@@ -9,5 +9,7 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    strong = link_to 'На главную', root_path
+    hr
     p#notice = notice 
     = yield

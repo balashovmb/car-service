@@ -1,18 +1,10 @@
-= form_for @order_position do |f|
-  - if @order_position.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@order_position.errors.count, "error")} prohibited this order_position from being saved:"
-      ul
-        - @order_position.errors.full_messages.each do |message|
-          li = message
-
+- model = order_position.created_at ? order_position : [order, order_position]
+= form_for model do |f|
+  = render partial: 'common/errors', locals: { resource: order_position } 
   .field
-    = f.label :executor
-    = f.text_field :executor
+    = f.label :executor, 'Исполнитель'
+    = f.collection_select(:executor_id, Executor.all, :id, :name, {:prompt => 'Выбрать исполнителя'}, {:class=>'select'}) 
   .field
-    = f.label :service_unit
-    = f.text_field :service_unit
-  .field
-    = f.label :order
-    = f.text_field :order
-  .actions = f.submit
+    = f.label :service_unit, 'Услуга'
+    = f.collection_select(:service_unit_id, ServiceUnit.all, :id, :name, {:prompt => 'Выбрать услугу'}, {:class=>'select'}) 
+  .actions = f.submit "#{order_position.created_at ? "Изменить" : "Добавить"}"

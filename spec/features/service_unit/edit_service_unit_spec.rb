@@ -4,7 +4,7 @@ feature 'Delete service unit', '
   To manage workflow user can edit service unit
 ' do
   given!(:service_unit) { create(:service_unit) }
-  scenario 'creates' do
+  scenario 'changes name' do
     visit root_path
 
     click_on 'Управление категориями и услугами'

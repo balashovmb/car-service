@@ -1,0 +1,21 @@
+table#order_positions
+  thead
+    tr
+      th Категория
+      th Услуга
+      th Исполнитель
+      th
+      th
+      th
+
+  tbody
+    - order.order_positions.each do |order_position|
+      - if order_position.created_at
+        tr
+          td = order_position.service_unit.service_category.name
+          td = order_position.service_unit.name
+          td = order_position.executor.name
+          td = link_to "Показать", order_position
+          td = link_to "Отредактировать", edit_order_position_path(order_position)
+          td = link_to "Удалить", order_position, data: {confirm: "Are you sure?"}, method: :delete
+br

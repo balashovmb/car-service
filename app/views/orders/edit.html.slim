@@ -1,21 +1,17 @@
-h1 Editing order
+h1 Управление заказом № #{@order.id} от #{@order.created_at.strftime('%F')}
 
-== render "form"
+== render "orders/form"
 
 => link_to "Show", @order
 '|
 =< link_to "Back", orders_path
 
-= form_for [@order, @order_position] do |f|
-  = render partial: 'common/errors', locals: { resource: @order_position } 
+h3 Состав заказа
 
-  .field
-    = f.label :executor
-    = f.text_field :executor
-  .field
-    = f.label :service_unit
-    = f.text_field :service_unit
-  .field
-    = f.label :order
-    = f.text_field :order
-  .actions = f.submit
+= render partial: 'order_positions/list', locals: { order: @order }
+
+h3 Добавить услугу
+
+= render partial: 'order_positions/form', locals: { order: @order, order_position: @order_position }
+
+= link_to 'Назад', orders_path

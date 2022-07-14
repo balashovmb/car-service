@@ -1,7 +1,7 @@
 = form_for @order do |f|
-  = render partial: 'common/errors', locals: { resource: @order } 
+  = render partial: 'common/errors', locals: { resource: @order }
 
   .field
     = f.label :customer, "Заказчик"
     = f.text_field :customer
-  .actions = f.submit "#{@order.created_at ? "Изменить" : "Создать"}" 
+  .actions = f.submit "#{@order.created_at ? "Изменить" : "Создать"}"
