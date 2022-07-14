@@ -1,0 +1,10 @@
+- model = service_unit.created_at ? service_unit : [service_category, service_unit]
+- service_category ||= service_unit.service_category
+= form_with(model: model) do |form|
+  = render partial: 'common/errors', locals: { resource: service_unit } 
+  .field
+    = form.label :name, 'Название'
+    = form.text_field :name
+
+  .actions
+    = form.submit "#{service_unit.created_at ? "Изменить" : "Создать"}"

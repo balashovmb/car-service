@@ -1,0 +1,4 @@
+h1
+  | Новая услуга
+= render 'form', service_unit: @service_unit, service_category: @service_category
+= link_to 'Back', service_category_path(@service_category)

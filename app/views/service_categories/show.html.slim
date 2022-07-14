@@ -1,0 +1,26 @@
+p
+  strong Name:
+  = @service_category.name
+
+p = link_to "Изменить категорию", edit_service_category_path(@service_category)
+
+p = link_to "Создать услугу", new_service_category_service_unit_path(@service_category)
+
+h1
+  | Услуги
+table
+  thead
+    tr
+      th[colspan="3"]
+  tbody
+    - @service_category.service_units.each do |service_unit|
+      tr
+        td
+          = link_to service_unit.name, service_unit
+        td
+          = link_to 'Изменить услугу', edit_service_unit_path(service_unit)
+        td
+          = link_to 'Удалить услугу', service_unit, method: :delete, data: { confirm: 'Вы уверены?' }
+
+p = link_to "Back", service_categories_path
+

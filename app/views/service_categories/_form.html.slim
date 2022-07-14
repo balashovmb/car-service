@@ -1,0 +1,8 @@
+= form_for @service_category do |f|
+  = render partial: 'common/errors', locals: { resource: @service_category } 
+
+  .field
+    = f.label :name, 'Название'
+    = f.text_field :name
+
+  .actions = f.submit "#{@service_category.created_at ? "Изменить" : "Создать"}" 

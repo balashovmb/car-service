@@ -1,0 +1,21 @@
+h1 Перечень категорий
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @service_categories.each do |service_category|
+      tr
+        td = 
+        td = link_to service_category.name, service_category
+        td = link_to "Изменить категорию", edit_service_category_path(service_category)
+        td = link_to "Удалить категорию", service_category, data: {confirm: "Are you sure?"}, method: :delete
+
+br
+
+= link_to "Создать категорию", new_service_category_path
