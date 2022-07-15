@@ -1,0 +1,8 @@
+.h5 = "Заказ № #{order.id} от #{order.created_at.strftime('%F')}"
+.h6 = "Заказчик: #{order.customer}"
+
+= render partial: 'order_positions/order_positions', locals: {order: order}
+
+= link_to "Изменить", edit_order_path(order)
+.ml-2 = link_to "Удалить", order, data: {confirm: "Are you sure?"}, method: :delete
+.border-top.border-4.mt-3.mb-3.border-dark

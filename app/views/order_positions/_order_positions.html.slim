@@ -1,0 +1,17 @@
+- if order.order_positions.any?
+  table.table#order_positions
+    thead
+      tr
+        th Услуга
+        th Категория
+        th Исполнитель
+
+    tbody
+      - order.order_positions.each do |order_position|
+        - if order_position.created_at
+          tr
+            td = order_position.service_unit.name
+            td = order_position.service_unit.service_category.name
+            td = order_position.executor.name
+- else
+  .h6 В заказе отсутствуют работы

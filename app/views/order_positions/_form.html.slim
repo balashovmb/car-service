@@ -1,10 +1,15 @@
 - model = order_position.created_at ? order_position : [order, order_position]
 = form_for model do |f|
-  = render partial: 'common/errors', locals: { resource: order_position } 
-  .field
-    = f.label :executor, 'Исполнитель'
-    = f.collection_select(:executor_id, Executor.all, :id, :name, {:prompt => 'Выбрать исполнителя'}, {:class=>'select'}) 
-  .field
-    = f.label :service_unit, 'Услуга'
-    = f.collection_select(:service_unit_id, ServiceUnit.all, :id, :name, {:prompt => 'Выбрать услугу'}, {:class=>'select'}) 
-  .actions = f.submit "#{order_position.created_at ? "Изменить" : "Добавить"}"
+  = render partial: 'common/errors', locals: { resource: order_position }
+  .row
+    .field.row
+      .col-1
+        = f.label :executor, 'Исполнитель'
+      .col-2
+        = f.collection_select(:executor_id, Executor.all, :id, :name, {:prompt => 'Выбрать исполнителя'}, {:class=>'select'}) 
+    .field.row
+      .col-1
+        = f.label :service_unit, 'Услуга'
+      .col-2
+        = f.collection_select(:service_unit_id, ServiceUnit.all, :id, :name, {:prompt => 'Выбрать услугу'}, {:class=>'select'}) 
+    .actions = f.submit "#{order_position.created_at ? "Изменить" : "Добавить"}"

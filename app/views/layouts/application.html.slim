@@ -9,7 +9,17 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    strong = link_to 'На главную', root_path
-    hr
-    p#notice = notice 
-    = yield
+    .container-xxl
+      .row
+        .col-2
+          strong = link_to 'На главную', root_path
+        .col-2
+          = link_to 'Категории и услуги', service_categories_path
+        .col-2
+          = link_to 'Исполнители', executors_path
+        .col-2
+          = link_to 'Заказы', orders_path
+      hr
+      p#notice = notice
+      = yield
+
