@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :orders do
+    get :export, on: :collection, defaults: { format: :xlsx }
     resources :order_positions, shallow: true
   end
   resources :executors

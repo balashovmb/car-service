@@ -3,14 +3,23 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-
     @orders = Order::Arrange.call(params)
+  end
+
+  def export
+    @orders = Order::Arrange.call(params)
+
+    respond_to do |format|
+      format.xlsx {
+        response.headers['Content-Disposition'] = "attachment; filename=orders_#{DateTime.now.strftime('%F')}.xlsx"
+      }
+    end
   end
 
   # GET /orders/1 or /orders/1.json
   def show
-
   end
+
 
   # GET /orders/new
   def new

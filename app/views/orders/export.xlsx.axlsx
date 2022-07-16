@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Orders #{Time.now.strftime('%Y-%m-%d')}") do |sheet|
+  sheet.add_row ['№ заказа', 'Дата', 'Заказчик', 'Категория']
+  @orders.each do |order|
+    sheet.add_row([
+                    order.id,
+                    order.created_at.strftime('%Y-%m-%d'),
+                    order.customer
+                  ])
+    next unless order.order_positions.any?
+    sheet.add_row(['','','Услуги'])
+    sheet.add_row ['', '№', 'Исполнитель', 'Услуга', 'Категория']
+    order.order_positions.each do |position|
+      sheet.add_row([
+                      '',
+                      position.id,
+                      position.executor.name,
+                      position.service_unit.name,
+                      position.service_unit.service_category.name
+                    ])
+    end
+  end
+end

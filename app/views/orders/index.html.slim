@@ -3,7 +3,7 @@
 hr
 
 h3 Заказы
-
+= button_to 'Экспорт в Excel', export_orders_path, method: :get, params: params.permit!
 = form_with url: orders_path, method: :get do |f|
   .field
     = f.label :sort_by, 'Тип сортировки'
@@ -28,7 +28,12 @@ h3 Заказы
         = f.label :service_categories, 'Категории услуг'
         = f.select :service_categories, ServiceCategory.pluck(:name, :id), {}, {multiple: true}
 
-  = f.submit 'Отобразить'
+  .row
+    .col-1
+      = f.submit 'Отобразить'
+    .col-1
+
+
   .border-top.border-4.mt-3.mb-3.border-dark
   - @orders.each do |order|
     = render partial: "orders/order", locals: {order: order}
