@@ -29,6 +29,15 @@ h3 Заказы
       .field
         div = f.label :service_categories, 'Категории услуг'
         = f.select :service_categories, @service_categories, {}, {multiple: true}
+    .mt-2.row
+      .field.col-1
+        = f.label :created_at_start, 'Дата с'
+      .col-2
+        = f.date_field :created_at_start
+      .field.col-1
+        = f.label :created_at_end, 'по'
+      .col-2
+        = f.date_field :created_at_end
   .mt-2 = f.submit 'Отобразить'
 
 

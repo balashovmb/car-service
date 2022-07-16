@@ -33,6 +33,15 @@ class Order::Arrange < Service
       orders = orders.where(order_positions: { service_units: { service_categories: service_categories } })
     end
 
+    created_at_start = params['created_at_start']
+    created_at_end = params['created_at_end']
+    if !created_at_start.blank? && !created_at_end.blank?
+      start_created = created_at_start.to_date
+      end_created = created_at_end.to_date + 1.day
+      p end_created
+      orders = orders.where(created_at: start_created..end_created)
+    end
+
     sort_by = SORT_TYPES[params['sort_by']]
     return orders unless sort_by
 

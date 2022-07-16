@@ -20,6 +20,9 @@ html
         .col-2
           = link_to 'Заказы', orders_path
       hr
-      p#notice = notice
+      - if notice
+        p.mt-2.alert.alert-primary = notice
+      - if alert
+        p.mt-2.alert.alert-danger = alert
       = yield
 
