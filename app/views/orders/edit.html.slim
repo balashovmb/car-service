@@ -2,7 +2,7 @@ h1 Управление заказом № #{@order.id} от #{@order.created_at
 
 == render "orders/form"
 
-h3 Состав заказа
+.h3.mt-2 Состав заказа
 
 = render partial: 'order_positions/list', locals: { order: @order }
 
@@ -10,4 +10,4 @@ h3 Добавить услугу
 
 = render partial: 'order_positions/form', locals: { order: @order, order_position: @order_position }
 
-= link_to 'Назад', orders_path
+.mt-3 = link_to 'Назад', orders_path

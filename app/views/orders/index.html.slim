@@ -4,34 +4,33 @@ hr
 
 h3 Заказы
 = button_to 'Экспорт в Excel', export_orders_path, method: :get, params: params.permit!
-= form_with url: orders_path, method: :get do |f|
-  .field
-    = f.label :sort_by, 'Тип сортировки'
-    = f.select :sort_by, sort_types
+.mt-2 = form_with url: orders_path, method: :get do |f|
+  .field.row
+    .col-2
+      = f.label :sort_by, 'Тип сортировки'
+    .col-2
+      = f.select :sort_by, sort_types
   h5 Фильтры
-  i Можно выбрать несколько позиций с зажатым ctrl
+  i.fs-6 Можно выбрать несколько позиций с зажатым ctrl
   .row
     .col
       .field
-        = f.label :customers, 'Клиенты'
-        = f.select :customers, Order.pluck(:customer).uniq, {}, {multiple: true}
+        div = f.label :customers, 'Клиенты'
+        = f.select :customers, @clients, {}, {multiple: true}
     .col
       .field
-        = f.label :executors, 'Исполнители'
-        = f.select :executors, Executor.pluck(:name, :id), {}, {multiple: true}
+        div = f.label :executors, 'Исполнители'
+        = f.select :executors, @executors, {}, {multiple: true}
     .col
       .field
-        = f.label :service_units, 'Услуги'
-        = f.select :service_units, ServiceUnit.pluck(:name, :id), {}, {multiple: true}
+        div = f.label :service_units, 'Услуги'
+        = f.select :service_units, @service_units, {}, {multiple: true}
     .col
       .field
-        = f.label :service_categories, 'Категории услуг'
-        = f.select :service_categories, ServiceCategory.pluck(:name, :id), {}, {multiple: true}
+        div = f.label :service_categories, 'Категории услуг'
+        = f.select :service_categories, @service_categories, {}, {multiple: true}
+  .mt-2 = f.submit 'Отобразить'
 
-  .row
-    .col-1
-      = f.submit 'Отобразить'
-    .col-1
 
 
   .border-top.border-4.mt-3.mb-3.border-dark

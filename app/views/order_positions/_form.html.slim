@@ -2,14 +2,14 @@
 = form_for model do |f|
   = render partial: 'common/errors', locals: { resource: order_position }
   .row
-    .field.row
+    .mt-3.field.row
       .col-1
         = f.label :executor, 'Исполнитель'
       .col-2
         = f.collection_select(:executor_id, Executor.all, :id, :name, {:prompt => 'Выбрать исполнителя'}, {:class=>'select'}) 
-    .field.row
+    .mt-3.field.row
       .col-1
         = f.label :service_unit, 'Услуга'
       .col-2
         = f.collection_select(:service_unit_id, ServiceUnit.all, :id, :name, {:prompt => 'Выбрать услугу'}, {:class=>'select'}) 
-    .actions = f.submit "#{order_position.created_at ? "Изменить" : "Добавить"}"
+    .mt-3.actions = f.submit "#{order_position.created_at ? "Изменить" : "Добавить"}"

@@ -27,7 +27,7 @@ class OrderPositionsController < ApplicationController
 
     respond_to do |format|
       if @order_position.save
-        format.html { redirect_to order_url(@order), notice: "Order position was successfully created." }
+        format.html { redirect_to edit_order_url(@order), notice: "Order position was successfully created." }
       else
         format.html { render 'orders/edit', status: :unprocessable_entity }
       end
@@ -50,7 +50,7 @@ class OrderPositionsController < ApplicationController
     @order_position.destroy
 
     respond_to do |format|
-      format.html { redirect_to @order_position.order, notice: "Order position was successfully destroyed." }
+      format.html { redirect_to edit_order_url(@order_position.order), notice: "Order position was successfully destroyed." }
     end
   end
 

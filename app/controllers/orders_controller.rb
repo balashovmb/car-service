@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
+    @executors = Executor.pluck(:name, :id)
+    @clients = Order.pluck(:customer).uniq
+    @service_units = ServiceUnit.pluck(:name, :id)
+    @service_categories = ServiceCategory.pluck(:name, :id)
+
     @orders = Order::Arrange.call(params)
   end
 
