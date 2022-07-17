@@ -10,10 +10,10 @@ wb.add_worksheet(name: "Orders #{Time.now.strftime('%Y-%m-%d')}") do |sheet|
     next unless order.order_positions.any?
     sheet.add_row(['','','Услуги'])
     sheet.add_row ['', '№', 'Исполнитель', 'Услуга', 'Категория']
-    order.order_positions.each do |position|
+    order.order_positions.each_with_index do |position, i|
       sheet.add_row([
                       '',
-                      position.id,
+                      i + 1,
                       position.executor.name,
                       position.service_unit.name,
                       position.service_unit.service_category.name

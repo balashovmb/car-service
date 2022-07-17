@@ -8,7 +8,7 @@ feature 'Edit service category', '
     visit root_path
 
     click_on 'Управление категориями и услугами'
-    click_on 'Изменить категорию'
+    click_on 'Переименовать категорию'
 
     fill_in 'Название', with: 'Кузовные работы'
 
