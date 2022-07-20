@@ -10,7 +10,7 @@ feature 'Index service units', '
     visit root_path
 
     click_on 'Управление категориями и услугами'
-    click_on 'Покраска'
+    click_on service_unit.service_category.name
 
     expect(page).to have_content 'Покраска бампера'
     expect(page).to have_content 'Покраска двери'

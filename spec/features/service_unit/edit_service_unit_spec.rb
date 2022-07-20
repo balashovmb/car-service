@@ -3,12 +3,12 @@ require 'rails_helper'
 feature 'Delete service unit', '
   To manage workflow user can edit service unit
 ' do
-  given!(:service_unit) { create(:service_unit) }
+  given!(:service_unit) { create(:service_unit, name: 'Покраска бампера') }
   scenario 'changes name' do
     visit root_path
 
     click_on 'Управление категориями и услугами'
-    click_on 'Покраска'
+    click_on service_unit.service_category.name
     click_on 'Изменить услугу'
 
     fill_in 'Название', with: 'Покраска двери'

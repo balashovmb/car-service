@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :order do
-    customer { "Bill Gates" }
+    sequence(:customer) { |n| "Bill Gates #{n}" }
   end
 end

@@ -14,7 +14,7 @@ feature 'Create order position', '
       click_on 'Изменить'
 
       select "Иван Иванов", from: "order_position[executor_id]"
-      select "Покраска бампера", from: "order_position[service_unit_id]"
+      select service_unit.name, from: "order_position[service_unit_id]"
 
       click_on 'Добавить'
 

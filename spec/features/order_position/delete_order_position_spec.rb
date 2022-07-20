@@ -4,7 +4,7 @@ feature 'Delete order position', '
   To manage workflow user can delete order position
 ' do
   given!(:order_position) { create(:order_position) }
-  scenario 'creates' do
+  scenario 'deletes' do
     visit root_path
 
     click_on 'Управление заказами'

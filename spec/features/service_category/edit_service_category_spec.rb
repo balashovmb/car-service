@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Edit service category', '
   To manage workflow user can edit service category
 ' do
-  given!(:service_category) { create(:service_category) }
+  given!(:service_category) { create(:service_category, name: 'Покраска') }
   scenario 'changes name' do
     visit root_path
 

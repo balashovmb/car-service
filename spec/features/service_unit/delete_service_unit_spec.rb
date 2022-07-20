@@ -8,7 +8,7 @@ feature 'Delete service unit', '
     visit root_path
 
     click_on 'Управление категориями и услугами'
-    click_on 'Покраска'
+    click_on service_unit.service_category.name
     click_on 'Удалить услугу'
 
     expect(page).to have_content 'Service unit was successfully destroyed'
